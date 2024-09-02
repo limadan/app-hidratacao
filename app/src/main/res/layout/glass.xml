@@ -1,0 +1,35 @@
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.waterapp.GlassViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:onClick="@{() -> viewModel.toggleDrunk()}">
+
+        <ImageView
+            android:id="@+id/glassImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_glass_empty"
+            android:contentDescription="@string/glass_image"
+            app:tint="@{viewModel.glass.isDrunk ? @color/colorPrimary : @color/colorGray}" />
+
+        <TextView
+            android:id="@+id/glassTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.glass.amount}"
+            android:layout_gravity="center"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+</layout>
