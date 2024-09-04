@@ -4,15 +4,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.waterapp.GlassViewModel" />
+            type="com.example.waterapp.Glass" />
     </data>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="8dp"
-        android:onClick="@{() -> viewModel.toggleDrunk()}">
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/glassImageView"
@@ -21,13 +20,12 @@
             android:layout_gravity="center"
             android:src="@drawable/ic_glass_empty"
             android:contentDescription="@string/glass_image"
-            app:tint="@{viewModel.glass.isDrunk ? @color/colorPrimary : @color/colorGray}" />
+            />
 
         <TextView
             android:id="@+id/glassTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.glass.amount}"
             android:layout_gravity="center"
             android:textSize="12sp" />
 

@@ -5,7 +5,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.waterapp.databinding.GlassBinding;
+import com.example.waterapp.databinding.GlassViewModelBinding;
+
 import java.util.List;
 
 public class GlassAdapter extends RecyclerView.Adapter<GlassAdapter.GlassViewHolder> {
@@ -20,7 +21,7 @@ public class GlassAdapter extends RecyclerView.Adapter<GlassAdapter.GlassViewHol
     @Override
     public GlassViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        GlassBinding binding = DataBindingUtil.inflate(inflater, R.layout.glass, parent, false);
+        GlassViewModelBinding binding = DataBindingUtil.inflate(inflater, R.layout.glass_view_model, parent, false);
         return new GlassViewHolder(binding);
     }
 
@@ -37,15 +38,15 @@ public class GlassAdapter extends RecyclerView.Adapter<GlassAdapter.GlassViewHol
     }
 
     static class GlassViewHolder extends RecyclerView.ViewHolder {
-        private final GlassBinding binding;
+        private final GlassViewModelBinding binding;
 
-        public GlassViewHolder(GlassBinding binding) {
+        public GlassViewHolder(GlassViewModelBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
         public void bind(GlassViewModel viewModel) {
-            binding.setViewModel(viewModel);
+            binding.setViewModel(viewModel.getGlass());
             binding.executePendingBindings();
         }
     }

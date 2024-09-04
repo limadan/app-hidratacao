@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Peso"
+            android:text="@={mainViewModel.weight}"
             android:inputType="number"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
@@ -37,10 +38,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/calculateButton"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="45dp"
             app:layoutManager="GridLayoutManager"
             app:spanCount="4"
-            tools:listitem="@layout/glass" />
+            app:glassList="@{mainViewModel.glassesList}"
+            tools:listitem="@layout/glass_view_model" />
 
         <TextView
             android:id="@+id/waterIntakeTextView"
