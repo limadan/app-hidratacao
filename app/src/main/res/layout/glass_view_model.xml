@@ -3,7 +3,7 @@
 
     <data>
         <variable
-            name="viewModel"
+            name="Glass"
             type="com.example.waterapp.Glass" />
     </data>
 
@@ -18,7 +18,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_glass_empty"
+            android:src="@{Glass.imagemCopo}"
             android:contentDescription="@string/glass_image"
             />
 

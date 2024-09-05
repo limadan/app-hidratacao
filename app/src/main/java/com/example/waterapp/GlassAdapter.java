@@ -46,7 +46,7 @@ public class GlassAdapter extends RecyclerView.Adapter<GlassAdapter.GlassViewHol
         }
 
         public void bind(GlassViewModel viewModel) {
-            binding.setViewModel(viewModel.getGlass());
+            binding.setViewModel(viewModel);
             binding.executePendingBindings();
         }
     }

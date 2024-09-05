@@ -1,6 +1,8 @@
 package com.example.waterapp;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
@@ -33,5 +35,10 @@ public class MainActivity extends AppCompatActivity {
     @BindingAdapter("app:glassList")
     public static void setGlassList(RecyclerView rv, List<Glass> glass_list){
         rv.setAdapter(new GlassAdapter(glass_list));
+    }
+
+    @BindingAdapter("android:src")
+    public static void bindImagem(ImageView iv, int imagem){
+        iv.setImageResource(imagem);
     }
 }
