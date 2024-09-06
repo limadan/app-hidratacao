@@ -1,6 +1,7 @@
 package com.example.waterapp;
 
 import android.os.Bundle;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,9 +28,7 @@ public class MainActivity extends AppCompatActivity {
         binding.setMainViewModel(mainViewModel);
         binding.setLifecycleOwner(this);
 
-        GlassAdapter adapter = new GlassAdapter(mainViewModel.glassesList.getValue());
         binding.glassesRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
-        binding.glassesRecyclerView.setAdapter(adapter);
     }
 
     @BindingAdapter("app:glassList")

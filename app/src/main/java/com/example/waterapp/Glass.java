@@ -3,11 +3,9 @@ package com.example.waterapp;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class Glass extends ViewModel {
+public class Glass {
     private int amount;
     private boolean isDrunk;
-
-    public MutableLiveData<Integer> imagemCopo;
 
     public Glass(int amount) {
         this.amount = amount;
@@ -24,10 +22,5 @@ public class Glass extends ViewModel {
 
     public void toggleDrunk() {
         this.isDrunk = !this.isDrunk;
-        if(this.isDrunk()){
-            imagemCopo.postValue(R.drawable.ic_glass_empty);
-        }else{
-            imagemCopo.postValue(R.drawable.ic_glass_full);
-        }
     }
 }
