@@ -2,6 +2,8 @@ package com.example.waterapp;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,12 +42,19 @@ public class MainViewModel extends ViewModel {
         int totalMl = peso * 35;
         int numCopos = (int) Math.ceil((double) totalMl / volumeCopoMl);
         List<Glass> glasses = new ArrayList<>();
+
+        int totalMlAntigo = totalMl;
         for (int i = 0; i < numCopos; i++) {
-            glasses.add(new Glass(volumeCopoMl));
+            if(totalMl>volumeCopoMl){
+                glasses.add(new Glass(volumeCopoMl, new WaterObserver(this)));
+                totalMl-=volumeCopoMl;
+            }else{
+                glasses.add(new Glass(totalMl, new WaterObserver(this)));
+            }
         }
 
         glassesList.postValue(glasses);
-        waterIntakeText.setValue(Double.toString ((double)totalMl/(double)1000));
+        waterIntakeText.setValue(Double.toString ((double)totalMlAntigo/(double)1000));
     }
 
     public MutableLiveData<String> getWaterDrunkText() {
@@ -53,15 +62,15 @@ public class MainViewModel extends ViewModel {
     }
 
     public void calculateWaterDrunk() {
-        int totalDrunk = 0;
+        float totalDrunk = 0;
         List<Glass> glasses = glassesList.getValue();
         assert glasses != null;
         for (Glass g:glasses) {
             if(g.isDrunk()){
-                totalDrunk+=500;
+                totalDrunk+=g.getAmount();
             }
         }
-
-        waterDrunkText.postValue(Integer.toString(totalDrunk));
+        DecimalFormat df = new DecimalFormat("#.##");
+        waterDrunkText.postValue(df.format(totalDrunk/1000));
     }
 }

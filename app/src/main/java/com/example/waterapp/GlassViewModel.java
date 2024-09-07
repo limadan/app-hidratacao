@@ -12,6 +12,7 @@ public class GlassViewModel extends ViewModel {
     public MainViewModel mainViewModel;
 
     private MutableLiveData<Integer> imagemCopo;
+    private MutableLiveData<String> mlCopo;
 
     private Glass glass;
 
@@ -19,6 +20,7 @@ public class GlassViewModel extends ViewModel {
         this.glass = glass;
         this.mainViewModel = mainViewModel;
         this.imagemCopo = new MutableLiveData<>();
+        this.mlCopo = new MutableLiveData<>(Integer.toString(glass.getAmount()) + "ml");
 
         if(glass.isDrunk()){
             imagemCopo.postValue(R.drawable.ic_glass_empty);
@@ -29,6 +31,10 @@ public class GlassViewModel extends ViewModel {
 
     public Glass getGlass() {
         return glass;
+    }
+
+    public MutableLiveData<String> getMlCopo() {
+        return mlCopo;
     }
 
     public void toggleDrunk() {

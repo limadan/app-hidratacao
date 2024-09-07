@@ -7,9 +7,12 @@ public class Glass {
     private int amount;
     private boolean isDrunk;
 
-    public Glass(int amount) {
+    private WaterObserver waterObserver;
+
+    public Glass(int amount, WaterObserver waterObserver) {
         this.amount = amount;
         this.isDrunk = false;
+        this.waterObserver = waterObserver;
     }
 
     public int getAmount() {
@@ -22,5 +25,6 @@ public class Glass {
 
     public void toggleDrunk() {
         this.isDrunk = !this.isDrunk;
+        waterObserver.update();
     }
 }
